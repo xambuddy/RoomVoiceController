@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RoomVoiceController.Views.SettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Button Command="{Binding CommandScan}" Text="Scan For Devices" />
+            <ListView ItemsSource="{Binding DeviceList}" SelectedItem="{Binding Device}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label
+                                    FontSize="Large"
+                                    Text="{Binding Name}"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Command="{Binding CommandConnect}"
+                IsEnabled="{Binding ConnectEnabled, Mode=TwoWay}"
+                Text="Connect" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
